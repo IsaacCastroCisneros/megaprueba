@@ -13,14 +13,10 @@ app.get('/post',(req,res)=>
     res.json('hmm')
 })
 
-
-if(process.env.NODE_ENV!=='production')
+app.get('*',(req,res)=>
 {
-    app.get('*',(req,res)=>
-    {
-        req.sendFile(path.resolve('dist','index.html'))
-    })
-}
+    req.sendFile(path.resolve('dist','index.html'))
+})
 
 app.listen(3001,()=>
 {
